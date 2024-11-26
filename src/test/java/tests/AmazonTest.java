@@ -9,7 +9,9 @@ import selenium.browser.Browser;
 import selenium.page_objects.CartPage;
 import selenium.page_objects.LandingPage;
 import selenium.page_objects.ResultsPage;
+import selenium.page_objects.common.CategoriesMenu;
 import selenium.utils.CartAssertions;
+import selenium.utils.Crawler;
 
 import java.util.*;
 
@@ -26,6 +28,10 @@ public class AmazonTest {
     private ResultsPage resultsPage = new ResultsPage();
 
     private CartPage cartPage = new CartPage();
+
+    private CategoriesMenu categoriesMenu = new CategoriesMenu();
+    private Crawler crawer = new Crawler();
+
 
 
     @BeforeTest
@@ -58,6 +64,25 @@ public class AmazonTest {
 
         CartAssertions.verifyProducts(addedItemNames, itemNamesInCart);
     }
+
+    @Test
+    public void Task2() throws Exception {
+        Browser.getDriver().get(APP_UNDER_TEST);
+        landingPage.validateCorrectAmazonIsPresented();
+
+        //Expand all categories menu
+        landingPage.clickAllCategoriesMenu();
+
+        landingPage.clickFirstSeeAllButton();
+
+        //Get a list for all the sub menus of Shop By Department
+        List<String> shopByDepartmentSubMenus = categoriesMenu.getAllSubCategories("Shop by department");
+
+        Set<String> allLinks = categoriesMenu.getAllLinksForSubMenu(shopByDepartmentSubMenus);
+
+        crawer.visitLinksWriteInfoInDocument(allLinks);
+    }
+
 
     @AfterTest
     public void afterScenario() {
