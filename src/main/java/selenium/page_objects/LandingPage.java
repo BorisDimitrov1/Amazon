@@ -22,7 +22,7 @@ public class LandingPage {
 
 
     /**
-     * Check if Bulgaria is presented, refresh if it is not
+     * Check if Bulgaria is presented, refresh if not
      */
     public void validateCorrectAmazonIsPresented(){
 

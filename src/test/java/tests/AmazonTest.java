@@ -58,9 +58,9 @@ public class AmazonTest {
         List<String> itemNamesInCart = cartPage.getItemNames();
 
         Assert.assertEquals(addedItemNames.size(), itemNamesInCart.size(),
-                "Expected and actual items in the cart does not match." +
-                        "\nExpected: " + addedItemNames +
-                        "\nActual: " + itemNamesInCart);
+                "\r\nExpected and actual items in the cart does not match." +
+                        "\r\nExpected: " + addedItemNames +
+                        "\r\nActual: " + itemNamesInCart);
 
         CartAssertions.verifyProducts(addedItemNames, itemNamesInCart);
     }
