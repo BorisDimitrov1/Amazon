@@ -35,7 +35,7 @@ public class CartAssertions {
                 }
             }
 
-            Assert.assertTrue(isPresented, "Product: " + addedProduct + " was not presented in the cart.");
+            Assert.assertTrue(isPresented, "\r\nProduct: " + addedProduct + " was not presented in the cart.");
         }
     }
 }
